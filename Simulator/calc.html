@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Rocket Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="calc_style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body onload="init()">
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="theme-label">Dark Mode</span>
+    </div>
+
+    <main class="container">
+        <h1>Water Rocket Calculator</h1>
+        
+        <div class="content-wrapper">
+            <div class="control-panel">
+                <div class="info-section">
+                    <h2>About</h2>
+                    <p>A comprehensive water rocket flight simulator. Input your rocket's specifications below to analyze its trajectory and performance.</p>
+                                    </div>
+
+                <div class="input-section">
+                    <h2>Rocket Specifications</h2>
+                    <div id="data_inp_header" class="input-group"></div>
+                    
+                    <details id="advanced_properties" class="advanced-settings">
+                        <summary>Advanced Settings</summary>
+                        <div id="adv_data_inp_header" class="input-group"></div>
+                    </details>
+                </div>
+
+                <div class="display-options">
+                    <h2>Display Options</h2>
+                    <div id="plot_inp_header" class="checkbox-group"></div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn primary" onclick="run()">Calculate</button>
+                    <button class="btn secondary" onclick="reset()">Reset</button>
+                </div>
+            </div>
+
+            <div id="graphwrapper" class="graph-container graphwrapper_norm">
+                <canvas id="graph"></canvas>
+                <button id="fscreen_btn" class="fullscreen-btn" onclick="fscreen(this, 'graphwrapper')">
+                    <span class="icon">⤢</span>
+                </button>
+            </div>
+            <div class="export-dropdown">
+                <select id="export-select" class="export-select">
+                    <option value="visible">Export Visible Data</option>
+                    <option value="all">Export All Data</option>
+                </select>
+                <button onclick="exportSelectedData()" class="export-btn">Export CSV</button>
+            </div>            
+        </div>
+    </main>
+
+    <script src="./calc_app.js"></script>
+</body>
+</html>
